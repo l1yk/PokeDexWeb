@@ -788,10 +788,7 @@
     <Content Include="Images\Dex\719.png" />
     <Content Include="Images\Dex\720.png" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap-theme.css.map" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap-theme.min.css.map" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap.css.map" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\Bootstrap\css\bootstrap-select.min.css" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
@@ -809,11 +806,13 @@
     <Content Include="Scripts\Bootstrap\css\bootstrap.css" />
     <Content Include="Scripts\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\Bootstrap\js\bootstrap-select.min.js" />
     <Content Include="Scripts\Bootstrap\js\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Scripts\Bootstrap\js\npm.js" />
     <Content Include="Scripts\jQuery\jquery-3.1.1.min.js" />
     <Content Include="Scripts\Vue\vue.min.js" />
+    <Content Include="Style\attr-span.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
