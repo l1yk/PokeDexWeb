@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="PokeDexWeb._default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dex.aspx.cs" Inherits="PokeDexWeb.dex" %>
 
 <!DOCTYPE html>
 
@@ -22,6 +22,10 @@
     <!-- My stylesheet -->
     <link href="Style/attr-span.css" rel="stylesheet" />
     <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+
         td.status-title {
             background-color: #30a7d7;
             color: #FFF;
@@ -55,6 +59,12 @@
             width: 25%;
         }
 
+        table.attribute td.attribute {
+            border: none;
+            border-width: 0px;
+            width: 50%;
+        }
+
         .no-margin {
             margin: 0px;
         }
@@ -67,12 +77,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="navbar navbar-inverse" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">寶可夢圖鑑查詢</a>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">寶可夢圖鑑查詢</a>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/dex.aspx">圖鑑</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="/">首頁</a></li>
+                <li><a href="/dex.aspx">圖鑑</a></li>
+                <li class="active">妙蛙種子</li>
+            </ol>
             <!-- col-md-3 -->
             <div class="col-xs-12 col-md-3">
                 <div class="panel panel-default">
@@ -106,9 +133,13 @@
                         </tr>
                         <tr>
                             <td class="status-title">屬性</td>
-                            <td>
-                                <div class="pokemon-attributes background-color-grass col-xs-6">草</div>
-                                <div class="pokemon-attributes background-color-poison col-xs-6">毒</div>
+                            <td style="padding: 0px;">
+                                <table class="table attribute no-margin">
+                                    <tr>
+                                        <td class="attribute"><span class="pokemon-attributes background-color-grass">草</span></td>
+                                        <td class="attribute"><span class="pokemon-attributes background-color-poison">毒</span></td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>

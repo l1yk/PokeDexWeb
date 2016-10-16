@@ -1,7 +1,10 @@
 ﻿.pokemon-attributes {
+    display: inline-block;
+    width: 100%;
     border-radius: 5px;
     padding: 0;
     text-align: center;
+    font-size: 14px;
 }
 
 .background-color-bug {

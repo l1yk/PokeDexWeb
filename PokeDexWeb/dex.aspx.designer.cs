@@ -10,7 +10,7 @@
 namespace PokeDexWeb {
     
     
-    public partial class _default {
+    public partial class dex {
         
         /// <summary>
         /// form1 控制項。
