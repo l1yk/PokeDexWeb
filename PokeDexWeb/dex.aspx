@@ -23,7 +23,7 @@
     <link href="Style/attr-span.css" rel="stylesheet" />
     <style type="text/css">
         body {
-            padding-top: 70px;
+            padding-top: 126px;
         }
 
         td.status-title {
@@ -95,7 +95,7 @@
             </div>
         </nav>
         <div class="container">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb" style="position: fixed; top: 70px; z-index: 1029;">
                 <li><a href="/">首頁</a></li>
                 <li><a href="/dex.aspx">圖鑑</a></li>
                 <li class="active">妙蛙種子</li>
@@ -103,7 +103,6 @@
             <!-- col-md-3 -->
             <div class="col-xs-12 col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">妙蛙種子</div>
                     <div class="panel-body">
                         <div class="form-group">
                             <select class="selectpicker form-control">
