@@ -119,6 +119,10 @@
                         <td class="status-title">體重</td>
                         <td>6.9kg</td>
                     </tr>
+                    <tr>
+                        <td class="status-title">♂:♀</td>
+                        <td>7:1</td>
+                    </tr>
                 </table>
             </div>
             <!-- 蛋 -->
