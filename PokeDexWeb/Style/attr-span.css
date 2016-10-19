@@ -186,3 +186,11 @@
     background-color: #4592c4;
     color: #fff;
 }
+
+.no-margin {
+    margin: 0px;
+}
+
+.no-padding {
+    padding: 0px;
+}
