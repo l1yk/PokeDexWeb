@@ -100,7 +100,7 @@ namespace PokeDexWeb
             string tmpSQL = string.Empty;
             Dictionary<string, string> SqlArgs = new Dictionary<string, string>();
 
-            int pokeNum = 1;
+            int pokeNum = (new Random(Guid.NewGuid().GetHashCode()).Next() % 720) + 1;
             string pokeForme = "normal";
 
             if (!string.IsNullOrEmpty(Request.QueryString["n"])) pokeNum = int.Parse(Request.QueryString["n"]);
