@@ -7,15 +7,15 @@ using System.Web;
 
 public class DataBaseUsage
 {
-    public static string PokedexConnectionString = @"server=elric.ddns.net;uid=pokedex;database=pokedex;password=lo820510;";
+    public static string PokedexConnectionString = @"server=218.161.69.125;uid=pokedex;database=pokedex;password=lo820510;";
 
     /// <summary>從MySQL資料庫取得DataTable</summary>
     /// <param name="connectionString">連接字串</param>
     /// <param name="sql">SQL查詢</param>
     /// <returns>含資料的DataTable</returns>
-    public static DataTable GetDataTableFromDB(string connectionString, string sql)
+    public static DataTable GetDataTableFromMySqlDB(string connectionString, string sql)
     {
-        return GetDataTableFromDB(connectionString, sql, null);
+        return GetDataTableFromMySqlDB(connectionString, sql, null);
     }
 
     /// <summary>透過含參數的查詢，從MySQL資料庫取得DataTable</summary>
@@ -23,7 +23,7 @@ public class DataBaseUsage
     /// <param name="sql">SQL查詢</param>
     /// <param name="args">參數</param>
     /// <returns>含資料的DataTable</returns>
-    public static DataTable GetDataTableFromDB(string connectionString, string sql, Dictionary<string, string> args)
+    public static DataTable GetDataTableFromMySqlDB(string connectionString, string sql, Dictionary<string, string> args)
     {
         DataTable RsltDT = new DataTable();
 

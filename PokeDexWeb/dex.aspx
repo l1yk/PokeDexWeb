@@ -52,6 +52,62 @@
         window.onload = function () {
             var activeBtn = document.getElementById('nav-dex');
             activeBtn.className = 'active';
+
+            var tmpObj, tmpValueNow, tmpValueMax;
+
+            tmpObj = document.getElementById('divValueBarHP');
+            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
+            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
+            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
+            tmpObj.className = 'progress-bar';
+            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
+            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
+            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+
+            tmpObj = document.getElementById('divValueBarAttack');
+            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
+            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
+            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
+            tmpObj.className = 'progress-bar';
+            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
+            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
+            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+
+            tmpObj = document.getElementById('divValueBarDefence');
+            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
+            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
+            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
+            tmpObj.className = 'progress-bar';
+            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
+            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
+            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+
+            tmpObj = document.getElementById('divValueBarSpAttack');
+            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
+            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
+            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
+            tmpObj.className = 'progress-bar';
+            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
+            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
+            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+
+            tmpObj = document.getElementById('divValueBarSpDefence');
+            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
+            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
+            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
+            tmpObj.className = 'progress-bar';
+            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
+            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
+            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+
+            tmpObj = document.getElementById('divValueBarSpeed');
+            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
+            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
+            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
+            tmpObj.className = 'progress-bar';
+            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
+            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
+            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
         }
     </script>
 </asp:Content>
@@ -74,7 +130,7 @@
                         </asp:DropDownList>
                     </div>
                     <div class="thumbnail no-margin">
-                        <asp:Image ID="imgProfile" runat="server" ImageUrl="Images/Dex/001.png" ClientIDMode="Static" />
+                        <asp:Image ID="imgProfile" runat="server" ClientIDMode="Static" />
                     </div>
                 </div>
             </div>
@@ -85,19 +141,19 @@
                     <tr>
                         <td class="status-title">圖鑑編號</td>
                         <td>
-                            <asp:Label ID="lblNationalNumber" runat="server" Text="001" ClientIDMode="Static"></asp:Label>
+                            <asp:Label ID="lblNationalNumber" runat="server" ClientIDMode="Static"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="status-title">日文名</td>
                         <td>
-                            <asp:Label ID="lblNameJPN" runat="server" Text="フシキダネ" ClientIDMode="Static"></asp:Label>
+                            <asp:Label ID="lblNameJPN" runat="server" ClientIDMode="Static"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="status-title">英文名</td>
                         <td>
-                            <asp:Label ID="lblNameENG" runat="server" Text="Bulbasaur" ClientIDMode="Static"></asp:Label>
+                            <asp:Label ID="lblNameENG" runat="server" ClientIDMode="Static"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -105,23 +161,33 @@
                         <td style="padding: 0px;">
                             <table class="table attribute no-margin">
                                 <tr>
-                                    <td class="attribute"><span class="pokemon-attributes background-color-grass">草</span></td>
-                                    <td class="attribute"><span class="pokemon-attributes background-color-poison">毒</span></td>
+                                    <td class="attribute">
+                                        <asp:Label ID="lblType1" runat="server" ClientIDMode="Static"></asp:Label>
+                                    </td>
+                                    <td class="attribute">
+                                        <asp:Label ID="lblType2" runat="server" ClientIDMode="Static"></asp:Label>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
                         <td class="status-title">身高</td>
-                        <td>0.7m</td>
+                        <td>
+                            <asp:Label ID="lblHeight" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="status-title">體重</td>
-                        <td>6.9kg</td>
+                        <td>
+                            <asp:Label ID="lblWeight" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="status-title">♂:♀</td>
-                        <td>7:1</td>
+                        <td>
+                            <asp:Label ID="lblGenderRatio" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -131,11 +197,15 @@
                 <table class="table table-bordered">
                     <tr>
                         <td class="status-title">孵化步數</td>
-                        <td>5120步</td>
+                        <td>
+                            <asp:Label ID="lblHatchCount" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="status-title">蛋群</td>
-                        <td>怪獸類、植物類</td>
+                        <td>
+                            <asp:Label ID="lblEggGroup" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -157,99 +227,104 @@
                         <td class="type">HP</td>
                         <td>
                             <div class="progress no-margin">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="255" style="width: 17.6%;">
-                                    <span class="sr-only">45</span>
+                                <div id="divValueBarHP" class="progress-bar" role="progressbar" runat="server" clientidmode="Static" aria-valuemin="0" aria-valuemax="255">
+                                    <span class="sr-only"></span>
                                 </div>
                             </div>
                         </td>
-                        <td class="stats-value">45</td>
-                        <td class="stats-value"></td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblStatsHP" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblEVsHP" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="type">攻擊</td>
                         <td>
                             <div class="progress no-margin">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="255" style="width: 19.2%;">
-                                    <span class="sr-only">49</span>
+                                <div id="divValueBarAttack" class="progress-bar" role="progressbar" runat="server" clientidmode="Static" aria-valuemin="0" aria-valuemax="255">
+                                    <span class="sr-only"></span>
                                 </div>
                             </div>
                         </td>
-                        <td class="stats-value">49</td>
-                        <td class="stats-value"></td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblStatsAttack" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblEVsAttack" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="type">防禦</td>
                         <td>
                             <div class="progress no-margin">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="255" style="width: 19.2%;">
-                                    <span class="sr-only">49</span>
+                                <div id="divValueBarDefence" class="progress-bar" role="progressbar" runat="server" clientidmode="Static" aria-valuemin="0" aria-valuemax="255">
+                                    <span class="sr-only"></span>
                                 </div>
                             </div>
                         </td>
-                        <td class="stats-value">49</td>
-                        <td class="stats-value"></td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblStatsDefence" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblEVsDefence" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="type">特攻</td>
                         <td>
                             <div class="progress no-margin">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="255" style="width: 25.5%;">
-                                    <span class="sr-only">65</span>
+                                <div id="divValueBarSpAttack" class="progress-bar" role="progressbar" runat="server" clientidmode="Static" aria-valuemin="0" aria-valuemax="255">
+                                    <span class="sr-only"></span>
                                 </div>
                             </div>
                         </td>
-                        <td class="stats-value">65</td>
-                        <td class="stats-value">1</td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblStatsSpAttack" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblEVsSpAttack" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="type">特防</td>
                         <td>
                             <div class="progress no-margin">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="255" style="width: 25.5%;">
-                                    <span class="sr-only">65</span>
+                                <div id="divValueBarSpDefence" class="progress-bar" role="progressbar" runat="server" clientidmode="Static" aria-valuemin="0" aria-valuemax="255">
+                                    <span class="sr-only"></span>
                                 </div>
                             </div>
                         </td>
-                        <td class="stats-value">65</td>
-                        <td class="stats-value"></td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblStatsSpDefence" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblEVsSpDefence" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="type">速度</td>
                         <td>
                             <div class="progress no-margin">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="255" style="width: 17.6%;">
-                                    <span class="sr-only">45</span>
+                                <div id="divValueBarSpeed" class="progress-bar" role="progressbar" runat="server" clientidmode="Static" aria-valuemin="0" aria-valuemax="255">
+                                    <span class="sr-only"></span>
                                 </div>
                             </div>
                         </td>
-                        <td class="stats-value">45</td>
-                        <td class="stats-value"></td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblStatsSpeed" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
+                        <td class="stats-value">
+                            <asp:Label ID="lblEVsSpeed" runat="server" ClientIDMode="Static"></asp:Label>
+                        </td>
                     </tr>
                 </table>
             </div>
             <!-- 特性 -->
             <div class="panel panel-default">
                 <div class="panel-heading">特性</div>
-                <table class="table table-bordered ability">
-                    <tr>
-                        <th class="type">特性一</th>
-                        <th class="name">茂盛</th>
-                        <th class="name">しんりょく</th>
-                        <th class="name">Overgrow</th>
-                    </tr>
-                    <tr>
-                        <td colspan="4">HP剩下最大HP的1/3以下時，草系技能的威力變成1.5倍。</td>
-                    </tr>
-                    <tr>
-                        <th class="type">隱藏特性</th>
-                        <th>葉綠素</th>
-                        <th>ようりょくそ</th>
-                        <th>Chlorophyll</th>
-                    </tr>
-                    <tr>
-                        <td colspan="4">晴天時，速度變成2倍。</td>
-                    </tr>
-                </table>
+                <asp:Table ID="tableAbility" runat="server" ClientIDMode="Static" CssClass="table table-bordered ability"></asp:Table>
             </div>
         </div>
     </div>

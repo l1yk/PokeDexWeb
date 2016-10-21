@@ -16,14 +16,17 @@ namespace PokeDexWeb
             // 取得type的ID,名稱對應表
             if (Session["TypeData"] == null)
             {
-                Dictionary<int, string> typeDic = new Dictionary<int, string>();
-                DataTable tmpDTData = DataBaseUsage.GetDataTableFromDB(DataBaseUsage.PokedexConnectionString, "SELECT ID, TypeNameTW FROM `Type`");
+                Dictionary<int, string[]> typeDic = new Dictionary<int, string[]>();
+                DataTable tmpDTData = DataBaseUsage.GetDataTableFromMySqlDB(DataBaseUsage.PokedexConnectionString, "SELECT ID, TypeNameCHT, ClassName FROM `Type` ORDER BY ID");
 
                 if (tmpDTData.Rows.Count > 0)
                 {
                     foreach (DataRow tmpRow in tmpDTData.Rows)
                     {
-                        typeDic.Add(int.Parse(tmpRow["ID"].ToString()), tmpRow["TypeNameCHT"].ToString());
+                        string[] typeData = new string[2];
+                        typeData[0] = tmpRow["TypeNameCHT"].ToString();
+                        typeData[1] = tmpRow["ClassName"].ToString();
+                        typeDic.Add(int.Parse(tmpRow["ID"].ToString()), typeData);
                     }
                 }
 
@@ -34,7 +37,7 @@ namespace PokeDexWeb
             if (Session["EggGroupData"] == null)
             {
                 Dictionary<int, string> eggGroupData = new Dictionary<int, string>();
-                DataTable tmpDTData = DataBaseUsage.GetDataTableFromDB(DataBaseUsage.PokedexConnectionString, "SELECT ID, Name FROM `EggGroup`");
+                DataTable tmpDTData = DataBaseUsage.GetDataTableFromMySqlDB(DataBaseUsage.PokedexConnectionString, "SELECT ID, Name FROM `EggGroup`");
 
                 if (tmpDTData.Rows.Count > 0)
                 {
@@ -51,7 +54,7 @@ namespace PokeDexWeb
             if (Session["GenderRatioData"] == null)
             {
                 Dictionary<int, string> genderRatioData = new Dictionary<int, string>();
-                DataTable tmpDTData = DataBaseUsage.GetDataTableFromDB(DataBaseUsage.PokedexConnectionString, "SELECT ID, GenderRatio FROM `GenderRatio`");
+                DataTable tmpDTData = DataBaseUsage.GetDataTableFromMySqlDB(DataBaseUsage.PokedexConnectionString, "SELECT ID, GenderRatio FROM `GenderRatio`");
 
                 if (tmpDTData.Rows.Count > 0)
                 {
@@ -68,7 +71,7 @@ namespace PokeDexWeb
             if (Session["AbilityData"] == null)
             {
                 Dictionary<int, string[]> abilityDic = new Dictionary<int, string[]>();
-                DataTable tmpDTData = DataBaseUsage.GetDataTableFromDB(DataBaseUsage.PokedexConnectionString, "SELECT * FROM `Ability`");
+                DataTable tmpDTData = DataBaseUsage.GetDataTableFromMySqlDB(DataBaseUsage.PokedexConnectionString, "SELECT * FROM `Ability`");
 
                 if (tmpDTData.Rows.Count > 0)
                 {
@@ -87,18 +90,39 @@ namespace PokeDexWeb
             }
             #endregion
 
-            Dictionary<int, string> dicType = (Dictionary<int, string>)Session["TypeData"];
+            Dictionary<int, string[]> dicType = (Dictionary<int, string[]>)Session["TypeData"];
             Dictionary<int, string> dicEggGroup = (Dictionary<int, string>)Session["EggGroupData"];
             Dictionary<int, string> dicGenderRatio = (Dictionary<int, string>)Session["GenderRatioData"];
             Dictionary<int, string[]> dicAbility = (Dictionary<int, string[]>)Session["AbilityData"];
+
 
             DataTable tmpDT = new DataTable();
             string tmpSQL = string.Empty;
             Dictionary<string, string> SqlArgs = new Dictionary<string, string>();
 
-            int pokenum = 1;
+            int pokeNum = 1;
+            string pokeForme = "normal";
 
-            if (!string.IsNullOrEmpty(Request.QueryString["n"])) pokenum = int.Parse(Request.QueryString["n"]);
+            if (!string.IsNullOrEmpty(Request.QueryString["n"])) pokeNum = int.Parse(Request.QueryString["n"]);
+            if (!string.IsNullOrEmpty(Request.QueryString["forme"])) pokeForme = Request.QueryString["forme"];
+
+
+            // 取得型態列表
+            List<ListItem> formeList = new List<ListItem>();
+            using (DataTable formeDT = DataBaseUsage.GetDataTableFromMySqlDB(DataBaseUsage.PokedexConnectionString, "SELECT DISTINCT Forme, FormeName FROM PokemonDetail WHERE NationalNumber = " + pokeNum.ToString()))
+            {
+                if (formeDT.Rows.Count > 0)
+                {
+                    foreach (DataRow tmpRow in formeDT.Rows)
+                    {
+                        ListItem Item = new ListItem(tmpRow["FormeName"].ToString(), tmpRow["Forme"].ToString());
+                        formeList.Add(Item);
+                    }
+                }
+            }
+            ddlForme.Items.Clear();
+            ddlForme.Items.AddRange(formeList.ToArray());
+            ddlForme.SelectedValue = pokeForme;
 
             tmpSQL = @"
 SELECT
@@ -111,17 +135,167 @@ FROM PokemonDetail d
 LEFT JOIN PokemonIndex i ON i.NationalNumber = d.NationalNumber
 WHERE d.NationalNumber = @dexnum AND d.Forme = @forme";
 
-            SqlArgs.Add("@dexnum", pokenum.ToString("000"));
-            SqlArgs.Add("@forme", "normal");
+            SqlArgs.Add("@dexnum", pokeNum.ToString("000"));
+            SqlArgs.Add("@forme", pokeForme);
 
-            tmpDT = DataBaseUsage.GetDataTableFromDB(DataBaseUsage.PokedexConnectionString, tmpSQL, SqlArgs);
+            tmpDT = DataBaseUsage.GetDataTableFromMySqlDB(DataBaseUsage.PokedexConnectionString, tmpSQL, SqlArgs);
+
+            int type1_ID = 0, type2_ID = 0;
+            int eggGroup1_ID = 0, eggGroup2_ID = 0;
 
             if (tmpDT.Rows.Count > 0)
             {
-                lblNationalNumber.Text = pokenum.ToString("000");
+                type1_ID = int.Parse(tmpDT.Rows[0]["Type1_ID"].ToString());
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["Type2_ID"].ToString())) type2_ID = int.Parse(tmpDT.Rows[0]["Type2_ID"].ToString());
+                eggGroup1_ID = int.Parse(tmpDT.Rows[0]["EggGroup1_ID"].ToString());
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["EggGroup2_ID"].ToString())) eggGroup2_ID = int.Parse(tmpDT.Rows[0]["EggGroup2_ID"].ToString());
+
+                // 編號
+                lblNationalNumber.Text = pokeNum.ToString("000");
+
+                // 圖片
+                imgProfile.ImageUrl = tmpDT.Rows[0]["ImgUrl"].ToString();
+
+                // 名稱
                 lblNameCHT.Text = tmpDT.Rows[0]["NameCHT"].ToString();
                 lblNameJPN.Text = tmpDT.Rows[0]["NameJPN"].ToString();
                 lblNameENG.Text = tmpDT.Rows[0]["NameENG"].ToString();
+
+                // 屬性
+                lblType1.Text = dicType[type1_ID][0];
+                lblType1.CssClass = dicType[type1_ID][1];
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["Type2_ID"].ToString()))
+                {
+                    lblType2.Text = dicType[type2_ID][0];
+                    lblType2.CssClass = dicType[type2_ID][1];
+                }
+
+                // 身高體重
+                lblHeight.Text = decimal.Parse(tmpDT.Rows[0]["Height"].ToString()).ToString("0.0") + "m";
+                lblWeight.Text = decimal.Parse(tmpDT.Rows[0]["Weight"].ToString()).ToString("0.0") + "kg";
+
+                // 性別比
+                lblGenderRatio.Text = dicGenderRatio[int.Parse(tmpDT.Rows[0]["GenderRatioID"].ToString())];
+
+                // 蛋相關
+                List<string> tmpEggGroupList = new List<string>();
+                tmpEggGroupList.Add(dicEggGroup[eggGroup1_ID]);
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["EggGroup2_ID"].ToString())) tmpEggGroupList.Add(dicEggGroup[eggGroup2_ID]);
+                lblEggGroup.Text = string.Join("、", tmpEggGroupList.ToArray());
+                lblHatchCount.Text = tmpDT.Rows[0]["HatchCount"].ToString() + "步";
+
+                // 種族
+                lblStatsHP.Text = tmpDT.Rows[0]["Stats_HP"].ToString();
+                lblStatsAttack.Text = tmpDT.Rows[0]["Stats_Attack"].ToString();
+                lblStatsDefence.Text = tmpDT.Rows[0]["Stats_Defence"].ToString();
+                lblStatsSpAttack.Text = tmpDT.Rows[0]["Stats_Sp.Attack"].ToString();
+                lblStatsSpDefence.Text = tmpDT.Rows[0]["Stats_Sp.Defence"].ToString();
+                lblStatsSpeed.Text = tmpDT.Rows[0]["Stats_Speed"].ToString();
+                divValueBarHP.Attributes["aria-valuenow"] = tmpDT.Rows[0]["Stats_HP"].ToString();
+                divValueBarAttack.Attributes["aria-valuenow"] = tmpDT.Rows[0]["Stats_Attack"].ToString();
+                divValueBarDefence.Attributes["aria-valuenow"] = tmpDT.Rows[0]["Stats_Defence"].ToString();
+                divValueBarSpAttack.Attributes["aria-valuenow"] = tmpDT.Rows[0]["Stats_Sp.Attack"].ToString();
+                divValueBarSpDefence.Attributes["aria-valuenow"] = tmpDT.Rows[0]["Stats_Sp.Defence"].ToString();
+                divValueBarSpeed.Attributes["aria-valuenow"] = tmpDT.Rows[0]["Stats_Speed"].ToString();
+
+                // 努力
+                lblEVsHP.Text = !tmpDT.Rows[0]["EV_HP"].ToString().Equals("0") ? tmpDT.Rows[0]["EV_HP"].ToString() : "";
+                lblEVsAttack.Text = !tmpDT.Rows[0]["EV_Attack"].ToString().Equals("0") ? tmpDT.Rows[0]["EV_Attack"].ToString() : "";
+                lblEVsDefence.Text = !tmpDT.Rows[0]["EV_Defence"].ToString().Equals("0") ? tmpDT.Rows[0]["EV_Defence"].ToString() : "";
+                lblEVsSpAttack.Text = !tmpDT.Rows[0]["EV_Sp.Attack"].ToString().Equals("0") ? tmpDT.Rows[0]["EV_Sp.Attack"].ToString() : "";
+                lblEVsSpDefence.Text = !tmpDT.Rows[0]["EV_Sp.Defence"].ToString().Equals("0") ? tmpDT.Rows[0]["EV_Sp.Defence"].ToString() : "";
+                lblEVsSpeed.Text = !tmpDT.Rows[0]["EV_Speed"].ToString().Equals("0") ? tmpDT.Rows[0]["EV_Speed"].ToString() : "";
+
+                // 特性
+                #region 特性一
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["Ability1_ID"].ToString()))
+                {
+                    int abilityIndex = int.Parse(tmpDT.Rows[0]["Ability1_ID"].ToString());
+                    TableRow hRow = new TableHeaderRow();
+                    TableRow iRow = new TableHeaderRow();
+
+                    // 名稱
+                    TableHeaderCell[] hCells = new TableHeaderCell[4];
+                    hCells[0] = new TableHeaderCell();
+                    hCells[0].CssClass = "type";
+                    hCells[0].Text = "特性一";
+                    for (int i = 1; i < 4; i++)
+                    {
+                        hCells[i] = new TableHeaderCell();
+                        hCells[i].CssClass = "name";
+                        hCells[i].Text = dicAbility[abilityIndex][i - 1];
+                    }
+                    hRow.Cells.AddRange(hCells);
+                    tableAbility.Rows.Add(hRow);
+
+                    // 效果
+                    TableCell iCell = new TableCell();
+                    iCell.ColumnSpan = 4;
+                    iCell.Text = dicAbility[abilityIndex][3];
+                    iRow.Cells.Add(iCell);
+                    tableAbility.Rows.Add(iRow);
+                }
+                #endregion
+
+                #region 特性二
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["Ability2_ID"].ToString()))
+                {
+                    int abilityIndex = int.Parse(tmpDT.Rows[0]["Ability2_ID"].ToString());
+                    TableRow hRow = new TableHeaderRow();
+                    TableRow iRow = new TableHeaderRow();
+
+                    // 名稱
+                    TableHeaderCell[] hCells = new TableHeaderCell[4];
+                    hCells[0] = new TableHeaderCell();
+                    hCells[0].CssClass = "type";
+                    hCells[0].Text = "特性二";
+                    for (int i = 1; i < 4; i++)
+                    {
+                        hCells[i] = new TableHeaderCell();
+                        hCells[i].CssClass = "name";
+                        hCells[i].Text = dicAbility[abilityIndex][i - 1];
+                    }
+                    hRow.Cells.AddRange(hCells);
+                    tableAbility.Rows.Add(hRow);
+
+                    // 效果
+                    TableCell iCell = new TableCell();
+                    iCell.ColumnSpan = 4;
+                    iCell.Text = dicAbility[abilityIndex][3];
+                    iRow.Cells.Add(iCell);
+                    tableAbility.Rows.Add(iRow);
+                }
+                #endregion
+
+                #region 隱藏特性
+                if (!string.IsNullOrEmpty(tmpDT.Rows[0]["AbilityH_ID"].ToString()))
+                {
+                    int abilityIndex = int.Parse(tmpDT.Rows[0]["AbilityH_ID"].ToString());
+                    TableRow hRow = new TableHeaderRow();
+                    TableRow iRow = new TableHeaderRow();
+
+                    // 名稱
+                    TableHeaderCell[] hCells = new TableHeaderCell[4];
+                    hCells[0] = new TableHeaderCell();
+                    hCells[0].CssClass = "type";
+                    hCells[0].Text = "隱藏特性";
+                    for (int i = 1; i < 4; i++)
+                    {
+                        hCells[i] = new TableHeaderCell();
+                        hCells[i].CssClass = "name";
+                        hCells[i].Text = dicAbility[abilityIndex][i - 1];
+                    }
+                    hRow.Cells.AddRange(hCells);
+                    tableAbility.Rows.Add(hRow);
+
+                    // 效果
+                    TableCell iCell = new TableCell();
+                    iCell.ColumnSpan = 4;
+                    iCell.Text = dicAbility[abilityIndex][3];
+                    iRow.Cells.Add(iCell);
+                    tableAbility.Rows.Add(iRow);
+                }
+                #endregion
             }
         }
     }
