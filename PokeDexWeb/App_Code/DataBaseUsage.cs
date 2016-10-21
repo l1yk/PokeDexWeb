@@ -68,9 +68,10 @@ public class DataBaseUsage
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message + "\r\n");
+                Console.WriteLine(ex.StackTrace);
             }
         }
         return RsltDT;
