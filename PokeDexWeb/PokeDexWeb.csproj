@@ -791,6 +791,54 @@
     <Content Include="Images\Dex\718.png" />
     <Content Include="Images\Dex\719.png" />
     <Content Include="Images\Dex\720.png" />
+    <Content Include="Images\Dex\mega\003.png" />
+    <Content Include="Images\Dex\mega\006X.png" />
+    <Content Include="Images\Dex\mega\006Y.png" />
+    <Content Include="Images\Dex\mega\009.png" />
+    <Content Include="Images\Dex\mega\015.png" />
+    <Content Include="Images\Dex\mega\018.png" />
+    <Content Include="Images\Dex\mega\065.png" />
+    <Content Include="Images\Dex\mega\080.png" />
+    <Content Include="Images\Dex\mega\094.png" />
+    <Content Include="Images\Dex\mega\115.png" />
+    <Content Include="Images\Dex\mega\127.png" />
+    <Content Include="Images\Dex\mega\130.png" />
+    <Content Include="Images\Dex\mega\142.png" />
+    <Content Include="Images\Dex\mega\150X.png" />
+    <Content Include="Images\Dex\mega\150Y.png" />
+    <Content Include="Images\Dex\mega\181.png" />
+    <Content Include="Images\Dex\mega\208.png" />
+    <Content Include="Images\Dex\mega\212.png" />
+    <Content Include="Images\Dex\mega\214.png" />
+    <Content Include="Images\Dex\mega\229.png" />
+    <Content Include="Images\Dex\mega\248.png" />
+    <Content Include="Images\Dex\mega\254.png" />
+    <Content Include="Images\Dex\mega\257.png" />
+    <Content Include="Images\Dex\mega\260.png" />
+    <Content Include="Images\Dex\mega\282.png" />
+    <Content Include="Images\Dex\mega\302.png" />
+    <Content Include="Images\Dex\mega\303.png" />
+    <Content Include="Images\Dex\mega\306.png" />
+    <Content Include="Images\Dex\mega\308.png" />
+    <Content Include="Images\Dex\mega\310.png" />
+    <Content Include="Images\Dex\mega\319.png" />
+    <Content Include="Images\Dex\mega\323.png" />
+    <Content Include="Images\Dex\mega\334.png" />
+    <Content Include="Images\Dex\mega\354.png" />
+    <Content Include="Images\Dex\mega\359.png" />
+    <Content Include="Images\Dex\mega\362.png" />
+    <Content Include="Images\Dex\mega\373.png" />
+    <Content Include="Images\Dex\mega\376.png" />
+    <Content Include="Images\Dex\mega\380.png" />
+    <Content Include="Images\Dex\mega\381.png" />
+    <Content Include="Images\Dex\mega\384.png" />
+    <Content Include="Images\Dex\mega\428.png" />
+    <Content Include="Images\Dex\mega\445.png" />
+    <Content Include="Images\Dex\mega\448.png" />
+    <Content Include="Images\Dex\mega\460.png" />
+    <Content Include="Images\Dex\mega\475.png" />
+    <Content Include="Images\Dex\mega\531.png" />
+    <Content Include="Images\Dex\mega\719.png" />
     <Content Include="packages.config" />
     <Content Include="Scripts\Bootstrap\css\bootstrap-select.min.css" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -798,6 +846,7 @@
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="template.Master" />
+    <None Include="Properties\PublishProfiles\Upload.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -818,7 +867,9 @@
     <Content Include="Scripts\jQuery\jquery-3.1.1.min.js" />
     <Content Include="Scripts\Vue\vue.min.js" />
     <Content Include="Style\attr-span.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\DataBaseUsage.cs" />

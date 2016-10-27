@@ -55,52 +55,23 @@
 
             var tmpObj, tmpValueNow, tmpValueMax;
 
-            tmpObj = document.getElementById('divValueBarHP');
-            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
-            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
-            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
-            tmpObj.className = 'progress-bar';
-            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
-            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
-            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+            VisualizeStats('divValueBarHP');
+            VisualizeStats('divValueBarAttack');
+            VisualizeStats('divValueBarDefence');
+            VisualizeStats('divValueBarSpAttack');
+            VisualizeStats('divValueBarSpDefence');
+            VisualizeStats('divValueBarSpeed');
 
-            tmpObj = document.getElementById('divValueBarAttack');
-            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
-            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
-            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
-            tmpObj.className = 'progress-bar';
-            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
-            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
-            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
+            $('#ddlForme').on('change', function () {
+                var pokeNum = parseInt($('#lblNationalNumber').html());
+                var forme = $('#ddlForme').find(':selected').val();
+                var tmpURL = '/dex.aspx?' + encodeURI('n=' + pokeNum.toString() + '&forme=' + forme);
+                window.open(tmpURL, '_self');
+            });
+        }
 
-            tmpObj = document.getElementById('divValueBarDefence');
-            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
-            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
-            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
-            tmpObj.className = 'progress-bar';
-            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
-            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
-            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
-
-            tmpObj = document.getElementById('divValueBarSpAttack');
-            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
-            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
-            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
-            tmpObj.className = 'progress-bar';
-            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
-            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
-            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
-
-            tmpObj = document.getElementById('divValueBarSpDefence');
-            tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
-            tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
-            tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
-            tmpObj.className = 'progress-bar';
-            if (tmpValueNow >= 100) tmpObj.classList.add('progress-bar-success');
-            else if (tmpValueNow <= 50 && tmpValueNow > 20) tmpObj.classList.add('progress-bar-warning');
-            else if (tmpValueNow <= 20) tmpObj.classList.add('progress-bar-danger');
-
-            tmpObj = document.getElementById('divValueBarSpeed');
+        function VisualizeStats(id) {
+            tmpObj = document.getElementById(id);
             tmpValueNow = parseFloat(tmpObj.attributes.getNamedItem('aria-valuenow').value);
             tmpValueMax = parseFloat(tmpObj.attributes.getNamedItem('aria-valuemax').value);
             tmpObj.style.width = ((tmpValueNow / tmpValueMax) * 100).toFixed(2) + '%';
@@ -113,10 +84,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <ol class="breadcrumb" style="position: fixed; top: 70px; z-index: 1029;">
-            <li></li>
+        <ol class="breadcrumb" style="position: fixed; top: 70px; z-index: 1029; margin-left: auto; margin-right: auto;">
+            <li>
+                <asp:HyperLink ID="linkPrevious" runat="server" ClientIDMode="Static" Visible="False">[Previous]</asp:HyperLink>
+            </li>
             <li class="active">
-                <asp:Label ID="lblNameCHT" runat="server" Text="妙蛙種子" ClientIDMode="Static"></asp:Label>
+                <asp:Label ID="lblNameCHT" runat="server" ClientIDMode="Static"></asp:Label>
+            </li>
+            <li>
+                <asp:HyperLink ID="linkNext" runat="server" ClientIDMode="Static" Visible="False">[Next]</asp:HyperLink>
             </li>
         </ol>
         <!-- col-md-3 -->
@@ -125,8 +101,7 @@
                 <div class="panel-heading">型態變化</div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <asp:DropDownList ID="ddlForme" runat="server" CssClass="selectpicker form-control" ClientIDMode="Static">
-                            <asp:ListItem Selected="True" Value="normal">妙蛙種子</asp:ListItem>
+                        <asp:DropDownList ID="ddlForme" runat="server" CssClass="selectpicker form-control" ClientIDMode="Static" AutoPostBack="False">
                         </asp:DropDownList>
                     </div>
                     <div class="thumbnail no-margin">

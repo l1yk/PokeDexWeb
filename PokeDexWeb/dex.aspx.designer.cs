@@ -13,6 +13,15 @@ namespace PokeDexWeb {
     public partial class dex {
         
         /// <summary>
+        /// linkPrevious 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkPrevious;
+        
+        /// <summary>
         /// lblNameCHT 控制項。
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace PokeDexWeb {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNameCHT;
+        
+        /// <summary>
+        /// linkNext 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkNext;
         
         /// <summary>
         /// ddlForme 控制項。

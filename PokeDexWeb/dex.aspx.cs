@@ -95,7 +95,6 @@ namespace PokeDexWeb
             Dictionary<int, string> dicGenderRatio = (Dictionary<int, string>)Session["GenderRatioData"];
             Dictionary<int, string[]> dicAbility = (Dictionary<int, string[]>)Session["AbilityData"];
 
-
             DataTable tmpDT = new DataTable();
             string tmpSQL = string.Empty;
             Dictionary<string, string> SqlArgs = new Dictionary<string, string>();
@@ -106,6 +105,19 @@ namespace PokeDexWeb
             if (!string.IsNullOrEmpty(Request.QueryString["n"])) pokeNum = int.Parse(Request.QueryString["n"]);
             if (!string.IsNullOrEmpty(Request.QueryString["forme"])) pokeForme = Request.QueryString["forme"];
 
+            // 上一隻、下一隻
+            if (pokeNum > 1)
+            {
+                linkPrevious.Text = "←" + (pokeNum - 1).ToString("000");
+                linkPrevious.NavigateUrl = "/dex.aspx?n=" + (pokeNum - 1).ToString();
+                linkPrevious.Visible = true;
+            }
+            if (pokeNum < 720)
+            {
+                linkNext.Text = (pokeNum + 1).ToString("000") + "→";
+                linkNext.NavigateUrl = "/dex.aspx?n=" + (pokeNum + 1).ToString();
+                linkNext.Visible = true;
+            }
 
             // 取得型態列表
             List<ListItem> formeList = new List<ListItem>();
@@ -157,7 +169,7 @@ WHERE d.NationalNumber = @dexnum AND d.Forme = @forme";
                 imgProfile.ImageUrl = tmpDT.Rows[0]["ImgUrl"].ToString();
 
                 // 名稱
-                lblNameCHT.Text = tmpDT.Rows[0]["NameCHT"].ToString();
+                lblNameCHT.Text = "No." + pokeNum.ToString("000") + " " + tmpDT.Rows[0]["NameCHT"].ToString();
                 lblNameJPN.Text = tmpDT.Rows[0]["NameJPN"].ToString();
                 lblNameENG.Text = tmpDT.Rows[0]["NameENG"].ToString();
 
