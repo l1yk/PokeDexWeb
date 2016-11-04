@@ -842,6 +842,9 @@
     <Content Include="Images\Dex\mega\475.png" />
     <Content Include="Images\Dex\mega\531.png" />
     <Content Include="Images\Dex\mega\719.png" />
+    <Content Include="Images\Dex\origin\382.png" />
+    <Content Include="Images\Dex\origin\383.png" />
+    <Content Include="Images\Dex\origin\487.png" />
     <Content Include="Images\Dex\season\585_autumn.png" />
     <Content Include="Images\Dex\season\585_summer.png" />
     <Content Include="Images\Dex\season\585_winter.png" />
