@@ -136,6 +136,11 @@ namespace PokeDexWeb
             ddlForme.Items.AddRange(formeList.ToArray());
             ddlForme.SelectedValue = pokeForme;
 
+            if (ddlForme.Items.Count <= 1)
+            {
+                ddlPanel.Visible = false;
+            }
+
             tmpSQL = @"
 SELECT
     i.NameCHT, i.NameJPN, i.NameENG, d.Type1_ID, d.Type2_ID

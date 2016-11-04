@@ -791,6 +791,9 @@
     <Content Include="Images\Dex\718.png" />
     <Content Include="Images\Dex\719.png" />
     <Content Include="Images\Dex\720.png" />
+    <Content Include="Images\Dex\formes\386A.png" />
+    <Content Include="Images\Dex\formes\386B.png" />
+    <Content Include="Images\Dex\formes\386S.png" />
     <Content Include="Images\Dex\mega\003.png" />
     <Content Include="Images\Dex\mega\006X.png" />
     <Content Include="Images\Dex\mega\006Y.png" />
@@ -839,6 +842,12 @@
     <Content Include="Images\Dex\mega\475.png" />
     <Content Include="Images\Dex\mega\531.png" />
     <Content Include="Images\Dex\mega\719.png" />
+    <Content Include="Images\Dex\season\585_autumn.png" />
+    <Content Include="Images\Dex\season\585_summer.png" />
+    <Content Include="Images\Dex\season\585_winter.png" />
+    <Content Include="Images\Dex\season\586_autumn.png" />
+    <Content Include="Images\Dex\season\586_summer.png" />
+    <Content Include="Images\Dex\season\586_winter.png" />
     <Content Include="packages.config" />
     <Content Include="Scripts\Bootstrap\css\bootstrap-select.min.css" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.eot" />

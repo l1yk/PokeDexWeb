@@ -100,7 +100,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">型態變化</div>
                 <div class="panel-body">
-                    <div class="form-group">
+                    <div class="form-group" id="ddlPanel" runat="server" clientidmode="static">
                         <asp:DropDownList ID="ddlForme" runat="server" CssClass="selectpicker form-control" ClientIDMode="Static" AutoPostBack="False">
                         </asp:DropDownList>
                     </div>
