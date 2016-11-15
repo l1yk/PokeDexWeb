@@ -19,6 +19,12 @@
     <!-- Bootstrap -->
     <script src="Scripts/Bootstrap/js/bootstrap.min.js"></script>
     <script src="Scripts/Bootstrap/js/bootstrap-select.min.js"></script>
+    <!-- body padding fix -->
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+    </style>
 
     <title>精靈寶可夢圖鑑查詢系統</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -38,7 +44,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="nav-collapse">
                     <ul class="nav navbar-nav">
-                        <li id="nav-dex"><a href="/dex.aspx">圖鑑</a></li>
+                        <li id="nav-list"><a href="/">圖鑑列表</a></li>
+                        <li id="nav-dex"><a href="/dex.aspx">圖鑑資料</a></li>
                     </ul>
                 </div>
             </div>

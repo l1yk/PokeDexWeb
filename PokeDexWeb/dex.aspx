@@ -96,93 +96,97 @@
             </li>
         </ol>
         <!-- col-md-3 -->
-        <div class="col-xs-12 col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">型態變化</div>
-                <div class="panel-body">
-                    <div class="form-group" id="ddlPanel" runat="server" clientidmode="static">
-                        <asp:DropDownList ID="ddlForme" runat="server" CssClass="selectpicker form-control" ClientIDMode="Static" AutoPostBack="False">
-                        </asp:DropDownList>
-                    </div>
-                    <div class="thumbnail no-margin">
-                        <asp:Image ID="imgProfile" runat="server" ClientIDMode="Static" />
+        <div class="col-xs-12 col-md-3 no-padding">
+            <div class="col-xs-12 col-sm-6 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">型態變化</div>
+                    <div class="panel-body">
+                        <div class="form-group" id="ddlPanel" runat="server" clientidmode="static">
+                            <asp:DropDownList ID="ddlForme" runat="server" CssClass="selectpicker form-control" ClientIDMode="Static" AutoPostBack="False">
+                            </asp:DropDownList>
+                        </div>
+                        <div class="thumbnail no-margin">
+                            <asp:Image ID="imgProfile" runat="server" ClientIDMode="Static" />
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- 基本資料 -->
-            <div class="panel panel-default">
-                <div class="panel-heading">基本資料</div>
-                <table class="table table-bordered">
-                    <tr>
-                        <td class="status-title">圖鑑編號</td>
-                        <td>
-                            <asp:Label ID="lblNationalNumber" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">日文名</td>
-                        <td>
-                            <asp:Label ID="lblNameJPN" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">英文名</td>
-                        <td>
-                            <asp:Label ID="lblNameENG" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">屬性</td>
-                        <td style="padding: 0px;">
-                            <table class="table attribute no-margin">
-                                <tr>
-                                    <td class="attribute">
-                                        <asp:Label ID="lblType1" runat="server" ClientIDMode="Static"></asp:Label>
-                                    </td>
-                                    <td class="attribute">
-                                        <asp:Label ID="lblType2" runat="server" ClientIDMode="Static"></asp:Label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">身高</td>
-                        <td>
-                            <asp:Label ID="lblHeight" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">體重</td>
-                        <td>
-                            <asp:Label ID="lblWeight" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">♂:♀</td>
-                        <td>
-                            <asp:Label ID="lblGenderRatio" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <!-- 蛋 -->
-            <div class="panel panel-default">
-                <div class="panel-heading">蛋相關</div>
-                <table class="table table-bordered">
-                    <tr>
-                        <td class="status-title">孵化步數</td>
-                        <td>
-                            <asp:Label ID="lblHatchCount" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-title">蛋群</td>
-                        <td>
-                            <asp:Label ID="lblEggGroup" runat="server" ClientIDMode="Static"></asp:Label>
-                        </td>
-                    </tr>
-                </table>
+            <div class="col-xs-12 col-sm-6 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">基本資料</div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="status-title">圖鑑編號</td>
+                            <td>
+                                <asp:Label ID="lblNationalNumber" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">日文名</td>
+                            <td>
+                                <asp:Label ID="lblNameJPN" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">英文名</td>
+                            <td>
+                                <asp:Label ID="lblNameENG" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">屬性</td>
+                            <td style="padding: 0px;">
+                                <table class="table attribute no-margin">
+                                    <tr>
+                                        <td class="attribute">
+                                            <asp:Label ID="lblType1" runat="server" ClientIDMode="Static"></asp:Label>
+                                        </td>
+                                        <td class="attribute">
+                                            <asp:Label ID="lblType2" runat="server" ClientIDMode="Static"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">身高</td>
+                            <td>
+                                <asp:Label ID="lblHeight" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">體重</td>
+                            <td>
+                                <asp:Label ID="lblWeight" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">♂:♀</td>
+                            <td>
+                                <asp:Label ID="lblGenderRatio" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 蛋 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">蛋相關</div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="status-title">孵化步數</td>
+                            <td>
+                                <asp:Label ID="lblHatchCount" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="status-title">蛋群</td>
+                            <td>
+                                <asp:Label ID="lblEggGroup" runat="server" ClientIDMode="Static"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- col-md-9 -->
