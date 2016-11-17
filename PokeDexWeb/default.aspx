@@ -6,6 +6,16 @@
     <script type="text/javascript">
         var app1;
 
+        Vue.directive('img', function (el, url) {
+            var img = new Image();
+            img.src = url.value;
+
+            img.onload = function () {
+                el.src = url.value;
+                $(el).css('opacity', 0).animate({ opacity: 1 }, 1000);
+            }.bind();
+        });
+
         window.onload = function () {
             var activeBtn = document.getElementById('nav-list');
             activeBtn.className = 'active';
@@ -14,7 +24,7 @@
                 el: '#pm_item',
                 data: {
                     pm_list: pm_list,
-                    gen: 0
+                    gen: 0,
                 }
             });
 
@@ -63,11 +73,11 @@
         <div id="listBoard" style="display: none;">
             <div class="col-xs-6 col-sm-4 col-md-2" v-for="pm_data in pm_list" v-if="gen == 0 ? true : pm_data.Gen == gen">
                 <div class="thumbnail">
-                    <a v-bind:href="'/dex.aspx?n='+parseInt(pm_data.Num).toString()">
+                    <a v-bind:href="'/dex.aspx?n=' + parseInt(pm_data.Num).toString()">
                         <div class="caption">
                             <h3 class="no-margin">No.{{ pm_data.Num }}</h3>
                         </div>
-                        <img v-bind:src="pm_data.ImgUrl" />
+                        <img src="/Images/loading.gif" v-img="pm_data.ImgUrl" />
                         <div class="caption">
                             <p>{{ pm_data.Name }}</p>
                         </div>
