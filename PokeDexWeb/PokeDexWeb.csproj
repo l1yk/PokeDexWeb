@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="dex.aspx" />
+    <Content Include="Images\bg.png" />
     <Content Include="Images\Dex\001.png" />
     <Content Include="Images\Dex\002.png" />
     <Content Include="Images\Dex\003.png" />
@@ -854,10 +855,15 @@
     <Content Include="Images\loading.gif" />
     <Content Include="packages.config" />
     <Content Include="Scripts\Bootstrap\css\bootstrap-select.min.css" />
+    <Content Include="Scripts\Bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Scripts\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\Bootstrap\js\bootstrap-select.min.js" />
+    <Content Include="Scripts\Bootstrap\js\bootstrap.min.js" />
     <Content Include="template.Master" />
     <None Include="Properties\PublishProfiles\Upload.pubxml" />
     <None Include="Web.Debug.config">
@@ -868,15 +874,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\Bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap.css" />
-    <Content Include="Scripts\Bootstrap\css\bootstrap.min.css" />
-    <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\Bootstrap\js\bootstrap-select.min.js" />
-    <Content Include="Scripts\Bootstrap\js\bootstrap.js" />
-    <Content Include="Scripts\Bootstrap\js\bootstrap.min.js" />
-    <Content Include="Scripts\Bootstrap\js\npm.js" />
     <Content Include="Scripts\jQuery\jquery-3.1.1.min.js" />
     <Content Include="Scripts\Vue\vue.min.js" />
     <Content Include="Style\attr-span.css" />
