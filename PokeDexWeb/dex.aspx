@@ -96,8 +96,8 @@
             </li>
         </ol>
         <!-- col-md-3 -->
-        <div class="col-xs-12 col-lg-3 no-padding">
-            <div class="col-xs-12 col-sm-6 col-lg-12">
+        <div class="col-xs-12 col-md-3 no-padding">
+            <div class="col-xs-12 col-sm-6 col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">型態變化</div>
                     <div class="panel-body">
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <!-- 基本資料 -->
-            <div class="col-xs-12 col-sm-6 col-lg-12">
+            <div class="col-xs-12 col-sm-6 col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">基本資料</div>
                     <table class="table table-bordered">
@@ -137,7 +137,7 @@
                         <tr>
                             <td class="status-title">屬性</td>
                             <td style="padding: 0px;">
-                                <table class="table attribute no-margin">
+                                <table class="table attribute no-margin" style="background-color: transparent;">
                                     <tr>
                                         <td class="attribute">
                                             <asp:Label ID="lblType1" runat="server" ClientIDMode="Static"></asp:Label>
@@ -190,7 +190,7 @@
             </div>
         </div>
         <!-- col-md-9 -->
-        <div class="col-xs-12 col-lg-9" id="content">
+        <div class="col-xs-12 col-md-9" id="content">
             <!-- 數值 -->
             <div class="panel panel-default">
                 <div class="panel-heading">

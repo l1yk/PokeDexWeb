@@ -865,6 +865,7 @@
     <Content Include="Scripts\Bootstrap\js\bootstrap-select.min.js" />
     <Content Include="Scripts\Bootstrap\js\bootstrap.min.js" />
     <Content Include="template.Master" />
+    <None Include="Properties\PublishProfiles\ToEmptyFolder.pubxml" />
     <None Include="Properties\PublishProfiles\Upload.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

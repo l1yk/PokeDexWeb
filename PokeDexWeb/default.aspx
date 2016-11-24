@@ -71,7 +71,7 @@
             </div>
         </div>
         <div id="listBoard" style="display: none;">
-            <div class="col-xs-6 col-sm-4 col-lg-2" v-for="pm_data in pm_list" v-if="gen == 0 ? true : pm_data.Gen == gen">
+            <div class="col-xs-6 col-sm-4 col-md-2" v-for="pm_data in pm_list" v-if="gen == 0 ? true : pm_data.Gen == gen">
                 <div class="thumbnail">
                     <a v-bind:href="'/dex.aspx?n=' + parseInt(pm_data.Num).toString()">
                         <div class="caption">
