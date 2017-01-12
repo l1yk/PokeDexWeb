@@ -22,11 +22,11 @@
     <!-- body padding fix -->
     <style type="text/css">
         body {
-            padding-top: 70px;
             background-image: url("/Images/bg.png");
             background-attachment: fixed;
             background-position: right bottom;
             background-repeat: no-repeat;
+            margin-top: 70px;
         }
     </style>
 

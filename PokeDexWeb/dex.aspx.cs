@@ -108,13 +108,13 @@ namespace PokeDexWeb
             // 上一隻、下一隻
             if (pokeNum > 1)
             {
-                linkPrevious.Text = "←" + (pokeNum - 1).ToString("000");
+                linkPrevious.Text = "<img src='Images/PM_icon/" + (pokeNum - 1).ToString() + ".png' /><span style='display: inline-block; vertical-align: middle;'>" + (pokeNum - 1).ToString("000") + "</span>";
                 linkPrevious.NavigateUrl = "/dex.aspx?n=" + (pokeNum - 1).ToString();
                 linkPrevious.Visible = true;
             }
             if (pokeNum < 720)
             {
-                linkNext.Text = (pokeNum + 1).ToString("000") + "→";
+                linkNext.Text = "<img src='Images/PM_icon/" + (pokeNum + 1).ToString() + ".png' /><span style='display: inline-block; vertical-align: middle;'>" + (pokeNum + 1).ToString("000") + "</span>";
                 linkNext.NavigateUrl = "/dex.aspx?n=" + (pokeNum + 1).ToString();
                 linkNext.Visible = true;
             }
@@ -175,6 +175,7 @@ WHERE d.NationalNumber = @dexnum AND d.Forme = @forme";
 
                 // 名稱
                 lblNameCHT.Text = "No." + pokeNum.ToString("000") + " " + tmpDT.Rows[0]["NameCHT"].ToString();
+                lblNameCHT.Attributes["style"] = "display: inline-block; vertical-align: middle;";
                 lblNameJPN.Text = tmpDT.Rows[0]["NameJPN"].ToString();
                 lblNameENG.Text = tmpDT.Rows[0]["NameENG"].ToString();
 

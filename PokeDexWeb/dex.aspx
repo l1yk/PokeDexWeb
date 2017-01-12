@@ -5,7 +5,7 @@
     <link href="Style/attr-span.css" rel="stylesheet" />
     <style type="text/css">
         body {
-            padding-top: 126px;
+            padding-top: 66px;
         }
 
         td.status-title {
@@ -23,7 +23,7 @@
         table.stats td.type {
             background-color: #a4a4a4;
             text-align: center;
-            width: 15%;
+            width: 20%;
         }
 
         table.stats td.stats-value {
@@ -84,7 +84,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <ol class="breadcrumb" style="position: fixed; top: 70px; z-index: 1029; margin-left: auto; margin-right: auto;">
+        <ol class="breadcrumb" style="z-index: 1029; position: fixed; top: 70px; margin-left: auto; margin-right: auto">
             <li>
                 <asp:HyperLink ID="linkPrevious" runat="server" ClientIDMode="Static" Visible="False">[Previous]</asp:HyperLink>
             </li>
